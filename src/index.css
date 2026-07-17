@@ -30,11 +30,11 @@
 @layer base {
   :root {
     --bg-base: #0A0E14;
-    --text-primary: #F0F6FC;
-    --text-muted: #A1B0C0;
-    --border-subtle: rgba(230, 237, 243, 0.05);
-    --border-strong: rgba(230, 237, 243, 0.15);
-    --bg-surface: rgba(10, 14, 20, 0.7);
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-subtle: #30363d;
+    --border-strong: #8b949e;
+    --bg-surface: #0a0e14;
     --bg-mesh-dark: #0A0E14;
     --accent-primary: #3FB950;
     --accent-secondary: #58A6FF;
@@ -48,11 +48,11 @@
 
   [data-theme='light'] {
     --bg-base: #ffffff;
-    --text-primary: #000000;
-    --text-muted: #32383F;
-    --border-subtle: rgba(10, 14, 20, 0.1);
-    --border-strong: rgba(10, 14, 20, 0.25);
-    --bg-surface: rgba(255, 255, 255, 0.85);
+    --text-primary: #0f172a;
+    --text-muted: #1e293b;
+    --border-subtle: #d0d7de;
+    --border-strong: #8c959f;
+    --bg-surface: #ffffff;
     --bg-mesh-dark: #ffffff;
     --accent-primary: #1A7F37;
     --accent-secondary: #0969DA;
@@ -106,7 +106,7 @@
   }
 
   .glass-panel {
-    background-color: var(--bg-surface);
+    background-color: color-mix(in srgb, var(--bg-surface) 80%, transparent);
     border: 1px solid var(--border-subtle);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);

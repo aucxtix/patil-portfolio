@@ -151,6 +151,14 @@ export function FeaturedProjects() {
                             <span className="opacity-50 text-[10px]">&gt; Querying architecture log...</span>
                             <span className="text-theme-text leading-relaxed font-light text-xs">{project.architecture}</span>
                          </div>
+                         <div className="mt-4 pt-3 border-t border-theme-border/50 flex flex-wrap gap-2">
+                           <span className="w-full opacity-50 text-[10px] mb-1">&gt; Loaded modules:</span>
+                           {project.tech.map(t => (
+                             <span key={t} className="px-2 py-1 bg-theme-surface border border-theme-border rounded text-[9px] text-theme-text uppercase tracking-widest">
+                               {t}
+                             </span>
+                           ))}
+                         </div>
                        </div>
                     </div>
                     
@@ -205,7 +213,7 @@ export function FeaturedProjects() {
                  </div>
                  <div className="flex flex-wrap gap-2 pt-6 pl-6">
                     {project.tech.map(t => (
-                      <span key={t} className="font-mono text-[9px] uppercase px-3 py-1.5 bg-theme-surface border border-theme-border rounded shadow-[0_4px_10px_rgba(0,0,0,0.5)] text-theme-muted hover:text-theme-text hover:border-theme-border-strong hover:bg-white/[0.05] transition-all duration-300 transform hover:-translate-y-0.5">
+                      <span key={t} className="font-mono text-[9px] uppercase px-3 py-1.5 bg-theme-surface border border-theme-border rounded shadow-[0_4px_10px_rgba(0,0,0,0.5)] text-theme-muted hover:text-theme-text hover:border-theme-border-strong hover:bg-theme-surface transition-all duration-300 transform hover:-translate-y-0.5">
                         {t}
                       </span>
                     ))}
@@ -224,7 +232,7 @@ export function FeaturedProjects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[300] bg-black text-white overflow-y-auto no-scrollbar"
+            className="fixed inset-0 z-[300] bg-theme-base text-theme-text overflow-y-auto no-scrollbar"
           >
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--p-color)_0%,transparent_60%)] opacity-10 pointer-events-none" style={{ '--p-color': selectedProject.color } as any} />
             <div className="absolute inset-0 bg-grid-cyber opacity-[0.1] -z-10" />
@@ -233,7 +241,7 @@ export function FeaturedProjects() {
               <button 
                 onClick={handleCloseSelect}
                 onMouseEnter={() => audio.hover()}
-                className="absolute top-12 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors z-50 text-white/50 hover:text-white"
+                className="absolute top-12 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-theme-surface border border-theme-border hover:bg-theme-border transition-colors z-50 text-theme-muted/70 hover:text-theme-text"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -249,7 +257,7 @@ export function FeaturedProjects() {
                    PROJECT {selectedProject.id} // SECURE ARCHIVE
                  </div>
                  <h1 className="font-display text-5xl md:text-8xl tracking-tight font-medium leading-none mb-8">{selectedProject.title}</h1>
-                 <p className="text-xl md:text-2xl text-white/60 max-w-3xl font-light">{selectedProject.value}</p>
+                 <p className="text-xl md:text-2xl text-theme-muted max-w-3xl font-light">{selectedProject.value}</p>
               </motion.div>
 
               <div className="grid md:grid-cols-2 gap-16 mb-24">
@@ -257,20 +265,20 @@ export function FeaturedProjects() {
                    initial={{ y: 30, opacity: 0 }}
                    animate={{ y: 0, opacity: 1 }}
                    transition={{ delay: 0.4, duration: 0.8 }}
-                   className="flex flex-col bg-white/[0.02] border border-white/5 p-8 rounded-2xl"
+                   className="flex flex-col bg-theme-surface/50 border border-theme-border p-8 rounded-2xl"
                  >
-                   <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 mb-4 border-b border-white/10 pb-4">The Constraint</h3>
-                   <p className="text-white/80 leading-relaxed font-light">{selectedProject.problem}</p>
+                   <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-theme-muted/70 mb-4 border-b border-theme-border pb-4">The Constraint</h3>
+                   <p className="text-theme-muted leading-relaxed font-light">{selectedProject.problem}</p>
                  </motion.div>
                  
                  <motion.div 
                    initial={{ y: 30, opacity: 0 }}
                    animate={{ y: 0, opacity: 1 }}
                    transition={{ delay: 0.5, duration: 0.8 }}
-                   className="flex flex-col bg-white/[0.02] border border-white/5 p-8 rounded-2xl"
+                   className="flex flex-col bg-theme-surface/50 border border-theme-border p-8 rounded-2xl"
                  >
-                   <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50 mb-4 border-b border-white/10 pb-4">Architecture</h3>
-                   <p className="text-white/80 leading-relaxed font-light">{selectedProject.architecture}</p>
+                   <h3 className="font-mono text-[10px] uppercase tracking-[0.2em] text-theme-muted/70 mb-4 border-b border-theme-border pb-4">Architecture</h3>
+                   <p className="text-theme-muted leading-relaxed font-light">{selectedProject.architecture}</p>
                  </motion.div>
               </div>
 
@@ -278,7 +286,7 @@ export function FeaturedProjects() {
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="w-full relative rounded-2xl border border-white/10 bg-black overflow-hidden p-12 md:p-24 flex flex-col items-center justify-center text-center shadow-[inset_0_0_100px_rgba(255,255,255,0.02)]"
+                className="w-full relative rounded-2xl border border-theme-border bg-black overflow-hidden p-12 md:p-24 flex flex-col items-center justify-center text-center shadow-[inset_0_0_100px_rgba(255,255,255,0.02)]"
               >
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--p-color)]/5 pointer-events-none" style={{ '--p-color': selectedProject.color } as any} />
                   <h3 className="font-mono text-[10px] uppercase tracking-[0.3em] mb-12" style={{ color: selectedProject.color }}>Measurable Impact</h3>
@@ -286,20 +294,20 @@ export function FeaturedProjects() {
                      "{selectedProject.outcome}"
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-24 w-full max-w-4xl border-t border-white/10 pt-16">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-24 w-full max-w-4xl border-t border-theme-border pt-16">
                      {selectedProject.metrics.map((m, i) => (
                        <div key={i} className="flex flex-col items-center gap-2">
-                         <span className="text-4xl md:text-6xl font-mono text-white/90">{m.value}</span>
-                         <span className="font-mono text-xs uppercase tracking-widest text-white/40">{m.label}</span>
+                         <span className="text-4xl md:text-6xl font-mono text-theme-text">{m.value}</span>
+                         <span className="font-mono text-xs uppercase tracking-widest text-theme-muted/50">{m.label}</span>
                        </div>
                      ))}
                   </div>
               </motion.div>
               
-              <div className="mt-24 flex justify-between items-center pt-8 border-t border-white/10">
+              <div className="mt-24 flex justify-between items-center pt-8 border-t border-theme-border">
                  <div className="flex flex-wrap gap-4">
                     {selectedProject.tech.map(t => (
-                      <span key={t} className="font-mono text-[10px] uppercase px-4 py-2 border border-white/10 rounded-full text-white/60">
+                      <span key={t} className="font-mono text-[10px] uppercase px-4 py-2 border border-theme-border rounded-full text-theme-muted">
                         {t}
                       </span>
                     ))}
