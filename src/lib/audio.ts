@@ -25,6 +25,19 @@ export class AudioEngine {
     this.enabled = false;
   }
 
+  public toggle() {
+    this.enabled = !this.enabled;
+    if (this.enabled) {
+      this.init();
+      this.resume();
+    }
+    return this.enabled;
+  }
+
+  public isEnabled() {
+    return this.enabled;
+  }
+
   public resume() {
     if (this.context && this.context.state === 'suspended') {
       this.context.resume();

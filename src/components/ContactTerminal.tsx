@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Mail, Linkedin, Github, FileText } from "lucide-react";
 import { Magnetic } from "./Magnetic";
 import { motion, useInView } from "motion/react";
 import { useRef, useEffect } from "react";
@@ -36,26 +36,29 @@ export function ContactTerminal() {
         </motion.div>
 
         {/* Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
            <Magnetic intensity={0.1}>
-             <a href="mailto:patilatharv104@gmail.com" onMouseEnter={() => audio.hover()} onClick={() => audio.click()} className="w-full flex flex-col items-center justify-center h-32 bg-[#050505] border border-theme-border rounded-xl hover:border-theme-border-strong transition-colors group relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-theme-surface opacity-0 group-hover:opacity-100 transition-opacity" />
+             <a href="mailto:patilatharv104@gmail.com" onMouseEnter={() => audio.hover()} onClick={() => audio.click()} className="w-full flex flex-col items-center justify-center h-32 bg-theme-surface border border-theme-border rounded-xl hover:border-theme-border-strong transition-colors group relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-theme-base opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Mail className="w-6 h-6 text-theme-muted group-hover:text-theme-text mb-3 transition-colors" />
                 <span className="font-mono text-[10px] uppercase tracking-widest text-theme-muted group-hover:text-theme-text transition-colors mb-2">Initialize</span>
                 <span className="font-display font-medium text-theme-text tracking-tight text-xl">Email</span>
              </a>
            </Magnetic>
 
            <Magnetic intensity={0.1}>
-             <a href="https://linkedin.com/in/atharvpatil110" target="_blank" rel="noreferrer" onMouseEnter={() => audio.hover()} onClick={() => audio.click()} className="w-full flex flex-col items-center justify-center h-32 bg-[#050505] border border-theme-border rounded-xl hover:border-[var(--accent-secondary)]/40 transition-colors group relative overflow-hidden">
+             <a href="https://www.linkedin.com/in/atharv-patil-ldrp/" target="_blank" rel="noreferrer" onMouseEnter={() => audio.hover()} onClick={() => audio.click()} className="w-full flex flex-col items-center justify-center h-32 bg-theme-surface border border-theme-border rounded-xl hover:border-[var(--accent-secondary)]/40 transition-colors group relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--accent-secondary)]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Linkedin className="w-6 h-6 text-theme-muted group-hover:text-theme-text mb-3 transition-colors" />
                 <span className="font-mono text-[10px] uppercase tracking-widest text-theme-muted group-hover:text-theme-text transition-colors mb-2">Connect</span>
                 <span className="font-display font-medium text-theme-text tracking-tight text-xl">LinkedIn</span>
              </a>
            </Magnetic>
 
            <Magnetic intensity={0.1}>
-             <a href="https://github.com/aucxtix" target="_blank" rel="noreferrer" onMouseEnter={() => audio.hover()} onClick={() => audio.click()} className="w-full flex flex-col items-center justify-center h-32 bg-[#050505] border border-theme-border rounded-xl hover:border-[var(--accent-primary)]/40 transition-colors group relative overflow-hidden">
+             <a href="https://github.com/aucxtix" target="_blank" rel="noreferrer" onMouseEnter={() => audio.hover()} onClick={() => audio.click()} className="w-full flex flex-col items-center justify-center h-32 bg-theme-surface border border-theme-border rounded-xl hover:border-[var(--accent-primary)]/40 transition-colors group relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[var(--accent-primary)]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Github className="w-6 h-6 text-theme-muted group-hover:text-theme-text mb-3 transition-colors" />
                 <span className="font-mono text-[10px] uppercase tracking-widest text-theme-muted group-hover:text-theme-text transition-colors mb-2">Verify</span>
                 <span className="font-display font-medium text-theme-text tracking-tight text-xl">GitHub</span>
              </a>
@@ -67,8 +70,9 @@ export function ContactTerminal() {
                  window.dispatchEvent(
                     new CustomEvent("show-toast", { detail: { message: "Extraction Initialized", subMessage: "Secure transmission of resume payload started." }})
                  );
-             }} className="w-full flex flex-col items-center justify-center h-32 bg-[#050505] border border-theme-border rounded-xl hover:border-white/40 transition-colors group relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+             }} className="w-full flex flex-col items-center justify-center h-32 bg-theme-surface border border-theme-border rounded-xl hover:border-theme-border-strong transition-colors group relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-theme-base opacity-0 group-hover:opacity-100 transition-opacity" />
+                <FileText className="w-6 h-6 text-theme-muted group-hover:text-theme-text mb-3 transition-colors" />
                 <span className="font-mono text-[10px] uppercase tracking-widest text-theme-muted group-hover:text-theme-text transition-colors mb-2">Extract</span>
                 <span className="font-display font-medium text-theme-text tracking-tight text-xl">Resume</span>
              </a>

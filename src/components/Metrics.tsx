@@ -28,10 +28,10 @@ function Counter({ value, label, suffix = "" }: { value: string, label: string, 
   }, [isInView, value]);
 
   return (
-    <div ref={ref} className="flex flex-col border border-theme-border bg-[#060606] p-6 lg:p-8">
+    <div ref={ref} className="flex flex-col border border-theme-border bg-theme-surface p-6 lg:p-8">
       <div className="font-mono text-[10px] tracking-widest text-theme-muted/70 uppercase mb-4">{label}</div>
       <div className="text-4xl lg:text-5xl font-display font-medium text-theme-text flex items-baseline gap-1">
-        {count}<span className="text-neutral-600 text-2xl">{suffix}</span>
+        {count}<span className="text-theme-muted/50 text-2xl">{suffix}</span>
       </div>
     </div>
   );
@@ -49,7 +49,7 @@ export function Metrics() {
           <span className="hover-glitch">~/metrics</span>
         </h2>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-neutral-900 border border-theme-border">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-theme-border border border-theme-border">
           <Counter value="12" label="Projects Shipped" suffix="+" />
           <Counter value="3" label="Hackathons Won" />
           <Counter value="500" label="Commits/Year" suffix="+" />

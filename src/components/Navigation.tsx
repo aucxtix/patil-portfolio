@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { cn } from "../lib/utils";
 import { motion, useScroll } from "motion/react";
-import { Command } from "lucide-react";
+import { Command, Volume2, VolumeX } from "lucide-react";
 import { audio } from "../lib/audio";
 
 const NAV_LINKS = [
@@ -14,7 +14,7 @@ const NAV_LINKS = [
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const { scrollYProgress } = useScroll();
-  const [uptime, setUptime] = useState("99.999");
+  const [soundEnabled, setSoundEnabled] = useState(audio.isEnabled());
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,15 +22,6 @@ export function Navigation() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    // Simulate live data-driven status slightly fluctuating
-    const interval = setInterval(() => {
-      const newVal = 99.98 + Math.random() * 0.019;
-      setUptime(newVal.toFixed(3));
-    }, 8000);
-    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -77,6 +68,22 @@ export function Navigation() {
           </div>
           <button
              onClick={() => {
+               const newState = audio.toggle();
+               setSoundEnabled(newState);
+               if (newState) audio.click();
+             }}
+             onMouseEnter={() => audio.hover()}
+             className="hidden md:flex items-center gap-2 border border-theme-border px-3 py-1.5 rounded-md hover:border-theme-border-strong transition-colors bg-theme-surface/50 group"
+             title={soundEnabled ? "Mute Sound" : "Enable Sound"}
+          >
+            {soundEnabled ? (
+              <Volume2 className="w-3.5 h-3.5 text-theme-muted group-hover:text-[var(--accent-primary)] transition-colors" />
+            ) : (
+              <VolumeX className="w-3.5 h-3.5 text-theme-muted/50 transition-colors" />
+            )}
+          </button>
+          <button
+             onClick={() => {
                audio.click();
                window.dispatchEvent(new CustomEvent('open-command-palette'));
              }}
@@ -91,16 +98,6 @@ export function Navigation() {
               <span className="text-[9px] text-theme-muted bg-theme-base border border-theme-border px-1 rounded shadow-sm">K</span>
             </div>
           </button>
-          <div className="hidden md:flex items-center gap-2">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent-primary)] opacity-40"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-primary)]"></span>
-            </span>
-            <div className="flex flex-col">
-               <span className="text-[9px] font-mono tracking-widest uppercase text-theme-muted/70 leading-none mb-0.5">SYS_HEALTHY</span>
-               <span className="text-[10px] font-mono tracking-tight text-theme-text leading-none">{uptime}% UPTIME</span>
-            </div>
-          </div>
         </div>
       </div>
     </header>

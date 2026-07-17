@@ -11,7 +11,7 @@ export function CurrentFocus() {
         </h2>
         
         <div className="grid md:grid-cols-2 gap-8">
-           <div className="border border-theme-border bg-[#050505] p-8">
+           <div className="border border-theme-border bg-theme-surface p-8">
              <div className="flex items-center gap-3 mb-6">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-40"></span>
@@ -25,7 +25,7 @@ export function CurrentFocus() {
              </p>
            </div>
            
-           <div className="border border-theme-border bg-[#050505] p-8">
+           <div className="border border-theme-border bg-theme-surface p-8">
              <div className="flex items-center gap-3 mb-6">
                 <span className="relative flex h-2 w-2">
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-neutral-600"></span>

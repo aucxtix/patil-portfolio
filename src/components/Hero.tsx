@@ -1,7 +1,86 @@
-import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
-import React, { useEffect, useState } from "react";
+import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSpring } from "motion/react";
+import React, { useEffect, useState, useRef } from "react";
 import { audio } from "../lib/audio";
 import { ArrowDown } from "lucide-react";
+
+const ParticleConnections = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    let particles: { x: number; y: number; vx: number; vy: number }[] = [];
+    let animationFrameId: number;
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      particles = Array.from({ length: 50 }).map(() => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+      }));
+    };
+
+    resize();
+    window.addEventListener("resize", resize);
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const isDark = document.documentElement.getAttribute("data-theme") !== "light";
+      const particleColor = isDark ? "rgba(255, 255, 255, 0.15)" : "rgba(0, 0, 0, 0.15)";
+      const lineColor = isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(0, 0, 0, 0.05)";
+
+      particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+        ctx.fillStyle = particleColor;
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 150) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = lineColor;
+            ctx.stroke();
+          }
+        }
+      });
+
+      animationFrameId = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 pointer-events-none -z-10"
+    />
+  );
+};
 
 export function Hero() {
   const { scrollY } = useScroll();
@@ -10,6 +89,23 @@ export function Hero() {
 
   const [bootStage, setBootStage] = useState(0);
   const [bootComplete, setBootComplete] = useState(false);
+
+  // Parallax
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 50, stiffness: 400 };
+  const parallaxX = useSpring(mouseX, springConfig);
+  const parallaxY = useSpring(mouseY, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    const x = (clientX / innerWidth - 0.5) * 40; // max 20px movement
+    const y = (clientY / innerHeight - 0.5) * 40;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
 
   // Sequences
   const sequence = [
@@ -52,12 +148,16 @@ export function Hero() {
     }
   };
 
+  const name = "Atharv Patil";
+
   return (
     <section 
       onClick={skipBoot}
+      onMouseMove={handleMouseMove}
       className="relative flex min-h-screen flex-col justify-center px-6 border-b border-theme-border bg-theme-base overflow-hidden"
     >
-      <div className="absolute inset-0 bg-grid-cyber opacity-[0.2] -z-10" />
+      <ParticleConnections />
+      <div className="absolute inset-0 bg-grid-cyber opacity-[0.2] -z-20" />
       
       <AnimatePresence mode="wait">
         {!bootComplete ? (
@@ -91,18 +191,34 @@ export function Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="w-full max-w-6xl mx-auto flex flex-col z-10"
           >
-            <div className="mb-8 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-[var(--accent-primary)] flex items-center gap-4">
+            <motion.div style={{ x: parallaxX, y: parallaxY }}>
+              <div className="mb-8 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-[var(--accent-primary)] flex items-center gap-4">
               <span className="w-8 md:w-12 h-px bg-[var(--accent-primary)]/40" />
               IDENTITY_CONFIRMED
             </div>
 
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-theme-text mb-6 leading-[1.1]">
-              Atharv Patil
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-theme-text mb-6 leading-[1.1] flex flex-wrap overflow-hidden">
+              {name.split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ y: "100%", opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    ease: [0.21, 0.47, 0.32, 0.98],
+                    delay: index * 0.05 
+                  }}
+                  className="inline-block hover-glitch"
+                  style={{ whiteSpace: "pre" }}
+                >
+                  {char}
+                </motion.span>
+              ))}
             </h1>
 
-            <div className="max-w-2xl">
+            <div className="max-w-4xl">
               <h2 className="text-xl md:text-2xl text-theme-muted font-light leading-relaxed mb-8">
-                Cybersecurity & Networking Enthusiast · Python/Django Developer · Computer Engineering @ GTU
+                Cybersecurity & Networking Enthusiast | Open Source Contributor | Hackathon Finalist(KSVxGUJCOST) | CE Student @ LDRP-ITR | Ex-Intern @ Webvanta Innovations | Member @GoogleDeveloperGroups
               </h2>
               
               <div className="flex flex-col gap-2 mb-12 border-l border-theme-border pl-6">
@@ -139,6 +255,7 @@ export function Hero() {
                 </a>
               </div>
             </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
