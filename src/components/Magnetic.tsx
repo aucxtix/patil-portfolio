@@ -1,7 +1,7 @@
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { motion, useMotionValue, useSpring, HTMLMotionProps } from "motion/react";
 import React, { useRef } from "react";
 
-interface MagneticProps extends React.HTMLAttributes<HTMLDivElement> {
+interface MagneticProps extends HTMLMotionProps<"div"> {
   children: React.ReactNode;
   className?: string;
   intensity?: number;

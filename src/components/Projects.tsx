@@ -35,7 +35,7 @@ export function Projects() {
         {PROJECTS.map((project) => (
           <div
             key={project.title}
-            className="group relative flex flex-col rounded-xl border border-neutral-800 bg-[#111111] p-6 lg:flex-row lg:p-8 hover:border-neutral-700 transition-colors"
+            className="group relative flex flex-col rounded-xl border border-neutral-800 bg-theme-surface/80 backdrop-blur-md p-6 lg:flex-row lg:p-8 hover:border-neutral-700 transition-colors"
           >
             <div className="flex flex-1 flex-col justify-between">
               <div>

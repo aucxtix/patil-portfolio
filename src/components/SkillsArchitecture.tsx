@@ -1,3 +1,4 @@
+import { DefragText } from "./DefragText";
 import { motion } from "motion/react";
 import { ViewTrigger } from "./ViewTrigger";
 import { Terminal, Database, Code2, Network, Shield, Cpu, LayoutTemplate, Github } from "lucide-react";
@@ -32,7 +33,7 @@ const STACK = [
 
 export function SkillsArchitecture() {
   return (
-    <section className="py-32 px-6 scan-line-divider bg-theme-base relative overflow-hidden flex flex-col justify-center">
+    <section className="py-32 px-6 scan-line-divider bg-transparent relative overflow-hidden flex flex-col justify-center">
       <ViewTrigger className="mx-auto w-full max-w-6xl relative z-10 flex flex-col items-center h-full">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -41,7 +42,7 @@ export function SkillsArchitecture() {
           className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--accent-primary)] mb-16 flex items-center gap-4 w-full"
         >
           <span className="w-12 h-px bg-[var(--accent-primary)]/40" />
-          <span className="hover-glitch">~/skills</span>
+          <DefragText text="~/skills" className="hover-glitch" />
         </motion.h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">

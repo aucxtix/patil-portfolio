@@ -1,17 +1,18 @@
+import { DefragText } from "./DefragText";
 import { AmbientGlow } from "./AmbientGlow";
 import { ViewTrigger } from "./ViewTrigger";
 
 export function CurrentFocus() {
   return (
-    <section className="py-24 px-6 border-b border-theme-border bg-theme-base relative group/section overflow-hidden">
+    <section className="py-24 px-6 border-b border-theme-border bg-transparent relative group/section overflow-hidden">
       <AmbientGlow color="var(--accent-purple)" opacity={0.06} className="opacity-0 group-hover/section:opacity-100 transition-opacity duration-1000" />
       <ViewTrigger className="mx-auto max-w-6xl">
         <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-theme-muted/70 mb-12">
-          <span className="hover-glitch">~/focus</span>
+          <DefragText text="~/focus" className="hover-glitch" />
         </h2>
         
         <div className="grid md:grid-cols-2 gap-8">
-           <div className="border border-theme-border bg-theme-surface p-8">
+           <div className="glass-panel p-8">
              <div className="flex items-center gap-3 mb-6">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-40"></span>
@@ -25,7 +26,7 @@ export function CurrentFocus() {
              </p>
            </div>
            
-           <div className="border border-theme-border bg-theme-surface p-8">
+           <div className="glass-panel p-8">
              <div className="flex items-center gap-3 mb-6">
                 <span className="relative flex h-2 w-2">
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-neutral-600"></span>

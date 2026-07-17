@@ -85,7 +85,7 @@ export function AIAssistant() {
             whileTap={{ scale: 0.95 }}
             onClick={() => { audio.click(); setIsOpen(true); }}
             onMouseEnter={() => audio.hover()}
-            className="w-14 h-14 rounded-full bg-[#050505] border border-[var(--accent-primary)]/30 shadow-[0_0_20px_var(--accent-primary)] flex items-center justify-center text-[var(--accent-primary)] group overflow-hidden relative"
+            className="w-14 h-14 rounded-full bg-theme-surface/80 backdrop-blur-md border border-[var(--accent-primary)]/30 shadow-[0_0_20px_var(--accent-primary)] flex items-center justify-center text-[var(--accent-primary)] group overflow-hidden relative"
           >
             <div className="absolute inset-0 bg-[var(--accent-primary)]/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             <Bot className="w-6 h-6 z-10" />

@@ -1,9 +1,10 @@
+import { DefragText } from "./DefragText";
 import { AmbientGlow } from "./AmbientGlow";
 import { ViewTrigger } from "./ViewTrigger";
 
 export function Identity() {
   return (
-    <section id="about" className="py-32 px-6 scan-line-divider bg-theme-base relative overflow-hidden group/section">
+    <section id="about" className="py-32 px-6 scan-line-divider bg-transparent relative overflow-hidden group/section">
       <AmbientGlow color="var(--accent-secondary)" opacity={0.06} className="opacity-0 group-hover/section:opacity-100 transition-opacity duration-1000" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-[var(--accent-secondary)]/10 via-transparent to-transparent pointer-events-none" />
       
@@ -12,7 +13,7 @@ export function Identity() {
           <div className="lg:col-span-5">
             <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--accent-secondary)] mb-6 flex items-center gap-4">
               <span className="w-8 h-px bg-[var(--accent-secondary)]/40" />
-              <span className="hover-glitch">~/about</span>
+              <DefragText text="~/about" className="hover-glitch" />
             </h2>
             <div className="h-px w-full bg-gradient-to-r from-[var(--accent-secondary)]/40 to-transparent mb-8" />
             <p className="font-display text-3xl text-theme-text font-medium leading-tight mb-8">

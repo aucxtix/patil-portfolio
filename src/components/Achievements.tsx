@@ -1,3 +1,4 @@
+import { DefragText } from "./DefragText";
 import { motion } from "motion/react";
 import { AmbientGlow } from "./AmbientGlow";
 import { ViewTrigger } from "./ViewTrigger";
@@ -34,7 +35,7 @@ export function Achievements() {
   ];
 
   return (
-    <section className="py-32 px-6 scan-line-divider bg-theme-base relative overflow-hidden group/section">
+    <section className="py-32 px-6 scan-line-divider bg-transparent relative overflow-hidden group/section">
       <AmbientGlow color="var(--accent-secondary)" opacity={0.06} className="opacity-0 group-hover/section:opacity-100 transition-opacity duration-1000" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--accent-primary)]/5 blur-[120px] rounded-full pointer-events-none" />
       
@@ -47,7 +48,7 @@ export function Achievements() {
           className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--accent-secondary)] mb-16 flex items-center gap-4"
         >
           <span className="w-12 h-px bg-[var(--accent-secondary)]/40" />
-          <span className="hover-glitch">~/achievements</span>
+          <DefragText text="~/achievements" className="hover-glitch" />
         </motion.h2>
         
         <div className="grid md:grid-cols-3 gap-6 mb-24">
@@ -82,7 +83,7 @@ export function Achievements() {
           className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--accent-secondary)] mb-8 flex items-center gap-4"
         >
           <span className="w-12 h-px bg-[var(--accent-secondary)]/40" />
-          <span className="hover-glitch">~/certifications</span>
+          <DefragText text="~/certifications" className="hover-glitch" />
         </motion.h2>
 
         <motion.div 

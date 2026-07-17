@@ -26,6 +26,7 @@ import { useGlobalShortcuts } from "./hooks/useGlobalShortcuts";
 import { ToastSystem } from "./components/ToastSystem";
 import { SecretDevMode } from "./components/SecretDevMode";
 import { NetworkLatency } from "./components/NetworkLatency";
+import { LivingCircuitCity } from "./components/LivingCircuitCity";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -53,6 +54,7 @@ export default function App() {
 
   return (
     <div className="flex min-h-screen flex-col font-sans transition-colors duration-1000">
+      <LivingCircuitCity />
       <Cursor />
       <ThemeToggle />
       <NetworkLatency />
@@ -66,7 +68,7 @@ export default function App() {
       {!loading && (
         <div className="flex min-h-screen flex-col animate-in fade-in duration-1000">
           <Navigation />
-          <main className="flex-1 bg-theme-base">
+          <main className="flex-1 bg-transparent">
             <Hero />
             <Identity />
             <Metrics />

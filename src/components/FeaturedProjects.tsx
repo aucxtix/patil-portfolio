@@ -1,3 +1,4 @@
+import { DefragText } from "./DefragText";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, Github, Code2, Network, Server, Terminal, X, ChevronRight } from "lucide-react";
@@ -81,7 +82,7 @@ export function FeaturedProjects() {
 
   return (
     <>
-      <section id="projects" className="py-32 px-6 scan-line-divider bg-theme-base relative group/section">
+      <section id="projects" className="py-32 px-6 scan-line-divider bg-transparent relative group/section">
         <AmbientGlow color="var(--accent-secondary)" opacity={0.06} className="opacity-0 group-hover/section:opacity-100 transition-opacity duration-1000" />
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[var(--accent-primary)]/5 blur-[150px] rounded-full pointer-events-none -translate-y-1/2" />
         
@@ -94,7 +95,7 @@ export function FeaturedProjects() {
             className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--accent-secondary)] mb-16 flex items-center gap-4"
           >
             <span className="w-12 h-px bg-[var(--accent-secondary)]/40" />
-            <span className="hover-glitch">~/projects</span>
+            <DefragText text="~/projects" className="hover-glitch" />
           </motion.h2>
 
           <div className="space-y-32">
@@ -112,7 +113,7 @@ export function FeaturedProjects() {
                 {/* Product Showcase Panel */}
                 <div className="w-full lg:w-5/12 lg:group-hover:w-1/2 transition-all duration-700 ease-out relative aspect-square md:aspect-[4/5] rounded-xl overflow-visible z-20" data-cursor="reticle">
                   <TiltCard className="w-full h-full">
-                  <div className="absolute inset-0 rounded-2xl overflow-hidden glass-panel flex flex-col justify-between p-8 border border-theme-border transition-all duration-700 group-hover:border-theme-border-strong bg-[#050505]">
+                  <div className="absolute inset-0 rounded-2xl overflow-hidden glass-panel flex flex-col justify-between p-8 border border-theme-border transition-all duration-700 group-hover:border-theme-border-strong bg-theme-surface/80 backdrop-blur-md">
                     {/* Hover Glare Effect */}
                     <div className="absolute inset-0 z-50 pointer-events-none overflow-hidden rounded-2xl">
                       <div className="absolute top-0 -left-[150%] w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-30deg] group-hover:left-[200%] transition-all duration-[1.5s] ease-in-out" />

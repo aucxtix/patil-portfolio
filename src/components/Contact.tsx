@@ -36,7 +36,7 @@ export function Contact() {
           </div>
         </div>
         
-        <div className="rounded-xl border border-neutral-800 bg-[#111111] p-6 lg:p-8">
+        <div className="rounded-xl border border-neutral-800 bg-theme-surface/80 backdrop-blur-md p-6 lg:p-8">
           <form className="space-y-4 text-sm">
             <div className="space-y-2">
               <label htmlFor="name" className="font-medium text-theme-muted block">Name</label>
@@ -84,7 +84,7 @@ function ContactLink({ href, icon, label, value }: { href: string; icon: React.R
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center justify-between rounded-lg border border-neutral-800/50 bg-[#111111]/50 p-4 transition-colors hover:border-neutral-700"
+      className="group flex items-center justify-between rounded-lg border border-neutral-800/50 bg-theme-surface/80 backdrop-blur-md/50 p-4 transition-colors hover:border-neutral-700"
     >
       <div className="flex items-center gap-4">
         <div className="flex h-10 w-10 items-center justify-center rounded-md bg-neutral-900 text-theme-muted group-hover:text-theme-text transition-colors">

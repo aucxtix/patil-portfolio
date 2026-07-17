@@ -41,7 +41,7 @@ export function Skills() {
         {SKILL_CATEGORIES.map((category) => (
           <div
             key={category.title}
-            className="group rounded-lg border border-neutral-800/50 bg-[#111111] p-6 transition-colors hover:border-neutral-700"
+            className="group rounded-lg border border-neutral-800/50 bg-theme-surface/80 backdrop-blur-md p-6 transition-colors hover:border-neutral-700"
           >
             <div className="mb-4 flex items-center gap-3 font-medium text-neutral-200">
               <span className="flex h-8 w-8 items-center justify-center rounded-md bg-neutral-900 text-theme-muted group-hover:text-theme-text transition-colors">

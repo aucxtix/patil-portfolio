@@ -10,7 +10,7 @@ export function ContactTerminal() {
   const containerRef = useRef<HTMLElement>(null);
 
   return (
-    <section id="contact" ref={containerRef} className="py-32 px-6 scan-line-divider bg-theme-base relative overflow-hidden bg-mesh-dark group/section">
+    <section id="contact" ref={containerRef} className="py-32 px-6 scan-line-divider bg-transparent relative overflow-hidden bg-mesh-dark group/section">
       <AmbientGlow color="var(--accent-secondary)" opacity={0.06} className="opacity-0 group-hover/section:opacity-100 transition-opacity duration-1000" />
       <div className="absolute top-0 right-1/4 w-[600px] h-[300px] bg-[var(--accent-primary)] opacity-[0.02] blur-[100px] rounded-full pointer-events-none mix-blend-screen" />
 

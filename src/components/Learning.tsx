@@ -3,7 +3,7 @@ import { Section } from "./Section";
 export function Learning() {
   return (
     <Section id="learning" title="Current Focus">
-      <div className="rounded-xl border border-neutral-800 bg-[#111111] p-8">
+      <div className="rounded-xl border border-neutral-800 bg-theme-surface/80 backdrop-blur-md p-8">
         <h3 className="font-display text-xl font-medium text-theme-text mb-4">
           What I'm building right now
         </h3>

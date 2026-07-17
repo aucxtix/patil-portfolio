@@ -8,7 +8,7 @@ interface CommandDef {
   id: string;
   title: string;
   category: string;
-  icon: React.ElementType;
+  icon: any;
   action: () => void;
 }
 

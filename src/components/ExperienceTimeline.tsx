@@ -1,3 +1,4 @@
+import { DefragText } from "./DefragText";
 import { motion } from "motion/react";
 import { AmbientGlow } from "./AmbientGlow";
 import { ViewTrigger } from "./ViewTrigger";
@@ -50,7 +51,7 @@ export function ExperienceTimeline() {
           className="font-mono text-[10px] uppercase tracking-[0.3em] text-theme-muted/70 mb-16 flex items-center gap-4"
         >
           <span className="w-12 h-px bg-theme-border-strong" />
-          <span className="hover-glitch">~/experience</span>
+          <DefragText text="~/experience" className="hover-glitch" />
         </motion.h2>
 
         <div className="relative border-l border-theme-border ml-4 lg:ml-[120px]">
